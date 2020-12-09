@@ -1,0 +1,15 @@
+{
+  "rules": {
+    "coaches" :{
+ ".read":true,
+ ".write":"auth != null"
+},
+"request": {
+".read":"auth != null",
+ ".write":true
+},
+
+    ".read": "now < 1609871400000",  // 2021-1-6
+    ".write": "now < 1609871400000",  // 2021-1-6
+  }
+}
