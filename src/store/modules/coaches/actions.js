@@ -9,10 +9,16 @@ export default {
       areas: data.areas
     };
 
-    const response = await fetch(`https://vue-http-demo-facb8-default-rtdb.firebaseio.com/coaches/${userId}.json`, {
-      method: 'PUT',
-      body: JSON.stringify(coachData)
-    });
+    const token = context.rootGetters.token;
+
+    const response = await fetch(
+      `https://vue-http-demo-facb8-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=` +
+        token,
+      {
+        method: 'PUT',
+        body: JSON.stringify(coachData)
+      }
+    );
 
     // const responseData = await response.json();
 
@@ -29,6 +35,7 @@ export default {
     if (!payload.forceRefresh && !context.getters.shouldUpdate) {
       return;
     }
+
     const response = await fetch(
       `https://vue-http-demo-facb8-default-rtdb.firebaseio.com/coaches.json`
     );
